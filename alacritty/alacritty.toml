@@ -8,7 +8,7 @@ import = [
 live_config_reload = true
 
 [shell]
-program = "/bin/zsh"
+program = "/usr/bin/nu"
 args = ["--login"]
 
 

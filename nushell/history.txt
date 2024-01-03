@@ -1,0 +1,1003 @@
+ls
+ps
+ls -la
+ls
+la
+ll
+pwd
+ls
+ls | where type =~ dir
+ls | where type = dir
+ls | where type == dir
+ls | where type =~ di
+ls | where type =~ i
+ls | where type =~ le
+ls | where type =~ file
+cat 
+cat justfile
+where cat
+whereis cat
+bat
+bat justfile
+neofetch
+pwd
+ls
+vim
+ls | modinfo 
+ls
+ls | where name =~ day
+ls | sort-by size | reverse
+reverse
+ls | reverse
+ps
+ps | head
+ps | tail
+ps | head == 3
+ps | head 3
+ps | head 
+ps | group
+ps | group status
+ps | group 2
+ls | group 23
+ls | group 2
+group --help
+less
+group --help
+[1,3,4,4,5]
+[1,3,4,4,5] | group 3
+[1,3,4,4,5] | group 3 | sort
+[1,3,4,4,5] | group 3 | reverse
+for 
+for i in [1,2,3]
+1kb
+1m
+1mb
+rm
+1mb
+1mib
+1kib
+1gib
+1tib
+1mib > 1MB
+1mB
+1mb
+1MB
+ps | where cpu > 10
+ps | where cpu > 5
+htop
+ps | where cpu > 5
+tailscale down
+sudo tailscale down
+ps | where cpu > 5
+ps | where status =~running
+ps | where status =~ running
+ps | where status =~ unning
+ps | where status =~ Running
+ps | where status =~ Sl
+ps | where status =~ Running
+watch ~~
+ps | where status =~ Running
+watch ps | where status =~ Running
+watch {ps | where status =~ Running}
+watch
+date
+date now
+sys
+sys | get host
+sys | get net
+sys net
+sys get net
+sys --help
+man sys
+sys.host
+(sys).host
+(sys).host.name
+;s
+ls
+ls.1
+(ls).1
+(ls).1.name
+(ls).1.type
+[12,3,4]
+[12,3,4].0
+sys | get host.name
+sys | get net
+ls
+ls | each {|x| echo $x}
+help sys
+help ls
+help help
+help str
+str
+u32
+ls
+path
+path .
+path
+path basename
+pwd | path
+pwd | path dirname
+pwd | path exists
+pwd | path join
+pwd
+pwd | path
+pwd | path parse
+ls
+path
+pwd | path split
+marks
+path
+ls
+ls **/*.rs
+ls **/*.rs | get size
+ls **/*.rs | get [name,size]
+ls **/*.rs | filter
+help filter
+let x = 3;
+x
+echo x
+echo $x
+printenv
+ls
+cd day-10
+l
+sl
+ls | length
+[1,2,3] | length
+echo "Test"
+echo "Test" | length
+echo "Test" | type
+echo "Test" | describe
+cd
+pwd
+cd .config/
+ls
+ll
+la
+all
+ls
+ll
+all
+help all
+foo
+[foo bar]
+[foo bar] | all {|x| describe x}
+[foo bar] | all {|x| describe $x}
+help all
+[foo bar] | all {describe }
+[foo bar] | all describe 
+[foo bar] | all {|| ($in | describe)}
+[foo bar] | each {|| ($in | describe)}
+[foo bar] | each { describe)}
+[foo bar] | each { describe}
+[foo bar] | each { describe }
+[foo bar] | describe
+ls | describe
+ls | each describe
+ls | each {describe}
+ls
+cd nushell/
+ls
+cat history.txt
+cat history.txt | length
+cat history.txt | describe
+read
+open history.txt
+open history.txt | describe
+ls
+vim history.txt
+ll
+ls
+l
+ls
+save "test.txt"
+"hello" | save
+"hello" | save "test.txt"
+ls
+cat test.txt
+rm test.txt
+rm test.txt | describe
+"hello" | save "test.txt"
+rm test.txt | describe
+def foo [] { 2 * 42 } | save file.nu
+"def foo [] { 2 * 42 }" | save file.nu
+cat file.nu
+source file.nu
+source "file.nu"
+cat file.nu
+foo
+$my_path
+$x
+session
+version
+nu | describe
+x  = 4
+$x  = 4
+let x = 4
+$x
+let x = 5
+$x + 1
+math
+ls | enumerate
+ls
+reduce
+date now | describe
+{'test': 3}
+{'test': 3}| describe
+foo | describe
+[foo] | describe
+"foo" | last
+lst
+lat
+ast
+help ast
+ast 'hallo'
+help ast
+for x in 1..10 {echo $x}
+for x in 1..10
+for x in 1..10\
+[one to]
+[one to] | to int
+[one to] | to 
+to
+[one to] | to  html
+[one to] | to yaml
+[one to] | to toml
+[one to] | to yaml
+ls | to yaml
+from
+from yaml
+read 
+ls
+rm file.nu
+marks
+goto 
+cd
+cd code/AoC2023/
+ls
+cd day-10/
+ls
+read Cargo.toml
+open Cargo.toml
+cat Cargo.toml
+cat Cargo.toml | from toml
+str split
+str
+lst
+list
+range
+help range
+range 1..109
+range 1..10
+[1,2,3] | range 1..10 
+[1,2,3] | range 0..10 
+ls
+[[1,2],[2,3]]
+[[a,b]; [2,3]]
+start
+start file.txt
+ls
+start src/bin/part1.rs
+help start
+start .
+start https://fachschaft.tf
+ls
+cd -
+cd 
+cd .config/nushell/
+ls
+{a: 1, b:1}
+{a: 1, b:1}| desc
+{a: 1, b:1}| describe
+{a: 1, b:1}| safe file.yaml
+{a: 1, b:1}| save file.yaml
+ll
+ls
+start file.yaml
+open file.yaml
+ls
+ls | name =~con
+ls | where name =~con
+ls | where name =~ con
+print 342
+ls | print
+ls | each {print}
+ls
+ls | get name
+ls | get 
+ls
+ls | get
+help get
+$env
+env
+env | get name
+env
+$env | get path
+$env 
+$env | describe
+env | where name =~ nu\
+env | where name =~ nu
+env | get Nu
+$env | get Nu
+$env | where name =~ nu
+$env | get Nu
+$env | get path
+$env
+$env | get config
+ls
+ls | name
+(ls).name
+(ls).names
+(ls).names?
+(ls).names?.all
+(ls).names?.all?
+ls
+ls | get size
+ls | get size.0
+ls | get size.0 | describe
+let a = [[a,b];["string", 43]]
+a
+$a
+let b = [[a,b];[43, "string"]]
+$b
+$a
+$a | append $b
+$a | append $b | describe
+ls | describe
+ls | get size.0 | describe
+ls | where size > 1kb
+ls | where size > 1kib
+ls
+ls | taple
+ls | table
+ls
+^ls
+grep
+help grep
+ls
+ls | get name
+help find
+ls
+ls | find file
+ls | find now
+ls | find 4.4KiB
+$env | find path
+$env | find alt
+$env | find vim
+$env | find nvim
+$env | find colors
+$env | find nushell
+"asdadsdfooasdsad" | find foo
+"asdadsdfooasdsad" | find fso
+find help
+find nu
+ls | find nur
+ls | find nu
+ls | get name | find nu
+ls | get name | find nu | ls
+ls | get name | find nu 
+$env.config
+$env.config.table
+$env.config.table.mode
+$env.config.table.mode = none
+ls
+$env.config.table.mode = "rounded"
+ls
+print (ls)
+ls | taple
+ls | table
+$env.config.table.mode = none
+ls | table
+$env.config.table.mode = "rounded"
+ls
+do { $env.config.table.mode = none; ls }
+do { $env.config.table.mode = none; ls | table }
+do { $env.config.table.mode = none; ls  }
+do { $env.config.table.mode = none; ls  }| table
+do { $env.config.table.mode = none; ls  }
+do { $env.config.table.mode = none; ls |table }
+ls
+cd
+ls
+ls *
+ls **
+ls **/*.hs
+ls **/*.rs
+ls **/*.rs | where size < 1Kib
+ls
+ls | group-by type
+ls **
+ls ** | each {|i| {name: i.name, size: i.size}}
+ls ** | par-each {|i| {name: i.name, size: i.size}}
+ls ** | par-each {|i| {name: i.name, size: i.size}} | length
+time
+time (!!)
+time( ls ** | par-each {|i| {name: i.name, size: i.size}} | length)
+measure
+timeit
+help timeit
+timeit { help timeit }
+time( ls ** | par-each {|i| {name: i.name, size: i.size}} | length)
+ls ** | par-each {|i| {name: i.name, size: i.size}} | length
+timeit {!!}
+timeit { timeit {!!} }
+ls ** | par-each {|i| {name: i.name, size: i.size}} | length
+timeit { ls ** | par-each {|i| {name: i.name, size: i.size}} | length }
+timeit { ls ** | each {|i| {name: i.name, size: i.size}} | length }
+ls
+timeit { ls ** | where type == dir |each {|i| {name: i.name, size: i.size}} | length }
+timeit { ls ** | where type == dir | par-each {|i| {name: i.name, size: i.size}} | length }
+ls
+cd .config/nushell/
+$env
+$env | table -e
+ls
+$env | find plugins
+ls
+module foo{}
+mkdir plugins
+cd plugins/
+ls
+vim foo.nu
+use foo.nu 
+vim foo.nu
+use foo.nu 
+vim foo.nu
+use foo.nu 
+vim foo.nu
+use foo.nu 
+ls
+use foo.nu
+use foo.nu *
+vim foo.nu
+git 
+git st
+git status
+ls
+git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | histogram committer merger | sort-by merger | reverse
+cd 
+cd code/examdatabase/
+git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | histogram committer merger | sort-by merger | reverse
+cd ..
+ls
+cd webseite-v4/
+git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | histogram committer merger | sort-by merger | reverse
+git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | first 10
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«"
+git contributer
+git sh
+$env.path
+$env.PATH
+$env.PATH | find nu
+git log
+git log | lines
+git log git log --pretty="%h|%s|%aN|%aE|%aD" -n 25
+git log --pretty="%h|%s|%aN|%aE|%aD" -n 25
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«"
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" a b
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" a b c d
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" a b c d e
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" num x
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash 
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash .
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject x
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer .
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main .
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main dime
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time | get hash
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time l
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time llll
+l
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time llll l l 
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD -n 5 | lines | split column "»¦«" hash subject committer main time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time
+ls
+cd ..
+ls
+ll
+ls
+cd ..
+cd dev/
+ls
+cd drink-management-system/
+ls
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get name and time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get name? and time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get name?  time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get  time
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get  comitter
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get  committer
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get  committer time
+join
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get  committer time | join
+opsert
+upsert date
+date now
+date now | upsert
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | get  committer time | select 3
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time 
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | select 2
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject committer main time | group-by name
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose a b
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose a b | select 3
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose a b | table 
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commit
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | table
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c}
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| 1}
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c | length}
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length}
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length}  a v
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | table
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse
+ls | table -n 1
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse | table
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse | table -e
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | table -e
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | table 
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | table -r
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | table -e
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse | table -e
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse 
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse | histogram
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse | histogram name commits
+ls
+help histogram
+ls | histogram
+ls | histogram type
+ls | histogram type size
+ls | histogram type asd
+ls | histogram type 
+ls | histogram size
+ls
+las
+ls
+dc logs
+ls
+cd 
+ls
+cd dev/
+ls
+cd nginx_testing/
+ls
+bat docker-compose.yml
+dc up -d
+dc 
+help dc
+dc up 
+ls
+docker compose up -d
+ls
+dc ps
+docker compose ps
+docker compose ps | table
+docker compose ps | lines
+docker compose ps | lines | skip1
+docker compose ps | lines | skip 1
+docker ps
+docker ps | lines skip 1
+docker ps | lines | skip 1
+docker ps | lines a b| skip 1 
+docker ps | lines | skip 1
+docker ps | lines | skip 1 | transpose
+docker ps | lines | skip 1 | table
+docker ps | lines | skip 1 | table a
+docker ps | lines | skip 1 | table | name
+docker ps | lines | skip 1 | table | rename
+docker ps | lines | skip 1 | describe
+docker ps | lines | skip 1 | table | describe
+docker ps | lines | skip 1 | describe
+docker ps | lines | skip 1 
+docker ps | lines | skip 1 | parse "{} {}"
+docker ps | lines | skip 1 | parse "{}"
+help split
+docker ps | lines | skip 1 | split column " "
+docker ps | lines | skip 1 | split column "\t"
+docker ps | lines | skip 1 | split column " "
+docker ps
+docker ps | lines | first
+docker ps | lines | first | describe
+docker ps | lines | first
+docker ps | lines | select 34
+docker ps | lines | select 1
+ls
+"hi There" | parse "{a} {b}" 
+docker ps | lines | select 1
+docker ps | lines | select 1 | parse "{a}"
+docker ps | lines | select 1 | parse "{a} {b}"
+docker ps | lines | select 1 | parse "{a} {b} {c}"
+docker ps | lines | select 1 | parse "{a}\t{b} {c}"
+docker ps | lines | select 1 | parse --regex "\w"
+docker ps | lines | select 1 | parse --regex "(\w)"
+docker ps | lines | select 1 | parse --regex '(\w)'
+docker ps | lines | select 1 | parse --regex '(\w+)'
+docker ps | lines | select 1 | parse --regex '(\w+) \w'
+docker ps | lines | select 1 
+docker ps 
+docker ps | lines | select 1 | parse --regex '^(\S+)\s+(\S+)\s+"([^"]+)"\s+(\S+)\s+Up\s+(\S+)\s+(\S+)\s+(\S+)$<\n>'
+docker ps | lines | select 1 
+docker compose ps
+dc down
+docker compose down
+docker compose up -d
+ls
+docker compose up -d
+docker compose ps
+docker ps | lines | select 1 | parse --regex "(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\w+ \w+ \w+)\s+(\w+ \w+ \w+)\s+(.*)"
+docker ps | lines | select 1 | parse --regex '(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\w+ \w+ \w+)\s+(\w+ \w+ \w+)\s+(.*)'
+docker ps | lines 
+"657c4b6e15a0   nginx" | parse --regex '\S+\s+\S+'
+"657c4b6e15a0   nginx" | parse --regex '(\S+)\s+(\S+)'
+"657c4b6e15a0   nginx" | parse --regex '(\S+)\s+(\S+)' a v
+"657c4b6e15a0   nginx" | parse --regex '(\S+)\s+(\S+)'
+docker ps | lines 
+"657c4b6e15a0   nginx" | parse --regex '(\S+)\s+(\S+) .*'
+"657c4b6e15a0   nginx" | parse --regex '(\S+)\s+(\S+).*'
+docker compose ps | lines | parse --regex '(\S+)\s+(\S+) .*'
+docker compose ps | lines | parse --regex '(\S+)\s+(\S+)\s+(\S+) .*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+(\S+) .*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)" .*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)\s+(\S+)" .*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)\s+(\S+)".*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\S+).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d\d\s\w+\s\w+).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d\d\s\w+\s\w).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d\d\s\w+\s\w+).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d\d\s\w+\s\w+)\s+(\S).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(\S).*'
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)'
+help rename
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename a b
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename image service command ? Uptime Status Ports
+docker compose ps
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | find ngin
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | find nginx
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | find serice gate
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports
+dc ps
+docker ps
+bits
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | to yaml
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | save up.yaml
+bat up.yaml
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | save up.toml
+bat up.yaml
+date now
+date now | date
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports | save up.toml
+docker compose ps | lines |skip 1| parse --regex '(\S+)\s+(\S+)\s+"(\S+)"\s+(\S+)\s+(\d+\s\w+\s\w+)\s+(\w+\s\d+\s\w+)\s+(.*)' | rename Name Image Command Service Created Status Ports 
+scope
+scope $x
+scope x
+help scope
+scope commands
+scope aliases 
+shells
+show
+g
+goto
+gelp goto
+help goto
+goto 1
+goto
+use goto
+g
+goto
+g 1
+g 0
+show
+alias
+scope aliases 
+enter
+shells
+scope aliases 
+n
+p
+scope aliases 
+enter 1
+enter ~
+show
+n
+p
+n
+shells
+n
+shells
+n
+shells
+scope aliases
+ll
+ls -l
+ls
+alias ll = ls -l
+ll
+nu
+n
+shells
+ll
+n
+ll
+history
+history | find *
+history | find s
+history | find scope
+aliases
+help aliases 
+dexit
+shells
+help aliases
+alias ll = ls -l
+help aliases
+next
+config nu
+vim
+config nu
+cd .config/nushell/
+ls
+history | find dc
+history | find docker 
+history | find docker | last
+history | find docker | tail
+vim config.nu
+dcps
+source config.nu
+vim config.nu
+ll
+config nu
+ll
+config nu
+ls
+ll
+l
+ll
+alias dc = docker compose
+dc
+dc ps
+cd 
+cd dev/nginx_testing/
+dc ps
+alias dc = docker compose | lines
+alias dc = 'docker compose | lines'
+alias dc = docker compose | lines
+config nu
+foo
+config nu
+def greet [name] {<\n>  ['hello' $name]<\n>}
+greet "Ianni"
+foo
+ls
+open env.nu
+$env.EDITOR
+/usr/bin/nvim
+nvim
+vim
+config nu
+vim
+$nu
+ps
+ls
+git st
+git status
+cd 
+cd code/AoC2023/
+git st
+git status
+git history
+git logs
+git log
+config nu
+nu
+nu
+cd
+pwd
+ls
+cat /etc/shells
+ls 
+ls | reject name
+ls | reject name size
+ls | select name
+ls | select name size
+ls | select name size | where size > 1Kib
+ls
+ls | select name size
+ls | select name size | where size > 1Mib
+ls | select name size | where size > 1Kib
+ls | select name size | where size > 1Kib | group-by type
+ls | select name size | where size > 1Kib
+ls | select name size | where size > 1Kib | group-by type
+ls | select name size type | where size > 1Kib | group-by type
+ls | select name size type | where size > 1Kib
+ls | select name size type | where size > 1Kib | group-by type
+ls | select name size type | where size > 1Kib | group-by type | transpose
+ls | select name size type | where size > 1Kib 
+ls | select name size type | where size > 1Kib  | select name
+ls | select name size type | where size > 1Kib  | select name | to yaml
+ls
+$env
+$env | reject config
+$env | reject config | transpose
+$env | reject config | transpose key val
+$env | reject config | transpose key val | head
+$env | reject config | transpose key val | head | select 1
+$env | reject config | transpose key val | head | select key
+$env | reject config | transpose key val | head | describe
+$env | reject config | transpose key val | first -n 2
+$env | reject config | transpose key val | first 2
+$env | reject config | transpose key val | first 10
+$env | reject config | transpose key val | last 10
+$env | reject config | transpose key val | first
+$env | reject config | transpose key val | first 20
+$env | reject config | transpose key val | first 20 | describe
+$env | reject config | transpose key val | each {|r| echo $"$env.($r.key) = '($r.val)'"} | str join (char nl)
+chsh
+cat
+open /etc/shells
+chsh
+$nu
+cd .config/nushell/
+ls
+$nu
+reboot
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse | histogram name commits
+git log --pretty=%h»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" hash subject name mail time | group-by name | transpose name commits | upsert commits {|c| $c.commits | length} | sort-by commits | reverse 
+ls
+nitrogen --restore
+ls
+ll
+pwd
+ls
+vim alacritty.toml
+ls
+ps 
+ps | first 2
+ps | first 4
+ps | sort
+ps | sort-by mem | first 20
+ps | sort-by mem | reverse | first 20
+ps | sort-by mem | reverse | first 20 | group-by ppid
+ps
+ps | group-by status
+ps | group-by status | transpose
+ps | group-by status | transpose a b
+ps | group-by status 
+ps | group-by status | table
+ps | group-by status | describe
+ps | group-by status | table
+ps | group-by status | length
+ps | group-by status 
+ps | group-by status | select Running
+ps | group-by status | select Running | transpose
+ps | group-by status | select Running | transpose status processes
+ps | group-by status | transpose status processes
+ps | group-by status | transpose status processes | upsert processes test
+ps | group-by status | transpose status processes | upsert processes (|x| x)
+help upsert
+ps | group-by status | transpose status processes | upsert processes {|x| x}
+ps | group-by status | transpose status processes | upsert processes {|x| x }
+ps | group-by status | transpose status processes | upsert processes {|x| test }
+ps | group-by status | transpose status processes | upsert processes {|x| 3 }
+ps | group-by status | transpose status processes | upsert processes {|x| $x }
+ps | group-by status | transpose status processes | upsert processes {|x| $x.processes | length }
+ps | group-by status | transpose status processes | upsert processes {|x| $x.processes | length } | sort-by processes
+ps | group-by status | transpose status processes | upsert processes {|x| $x.processes | length } | sort-by processes | reverse
+ps | group-by status | transpose status processes | upsert processes {|x| $x.processes | length }
+ls
+open .markfile
+open .markfile | describe
+read .markfile
+open .markfile | lines
+open .markfile | lines | split 
+open .markfile | lines | each {|line| split $line } 
+open .markfile | lines | each {|line| split } 
+open .markfile | lines | each {|line| parse "{mark}={path}" } 
+open .markfile | lines | each {|line| parse "{mark}={path}" } | concat
+open .markfile | lines | each {|line| parse "{mark}={path}" } | con
+open .markfile | lines | each {|line| parse "{mark}={path}" } | conc
+open .markfile | lines | each {|line| parse "{mark}={path}" } 
+open .markfile | lines | each {|line| parse "{mark}={path}" } | select 1
+open .markfile | lines | each {|line| parse "{mark}={path}" } | describe
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {||}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|x| x}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|x| $x}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| $x}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| $a}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| $x}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| a$x}
+append 
+help append
+concatenate
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| $a $x}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| [$a $x]}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| append $a $x}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| append $a}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| append $x}
+help append
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| ($a | append $x) }
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce --fold {} {|a,x| ($x | append $a) }
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) }
+path "/"
+"/" | path
+to path
+help path
+help path parse
+path parse "/"
+"/" | path parse
+"~" | path parse
+code/AoC2023/day-01/src/main.rs | path parse
+"code/AoC2023/day-01/src/main.rs" | path parse
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } 
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| $in}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) }
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | last | get path
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } 
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | mark
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | get mark
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where name == aoc
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first?
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path
+path help
+help path
+mv
+help mv
+/ | mv
+mv
+mv /
+cd
+~ | cd
+cd ~
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | {cd %in}
+ls
+pwd
+cd code/
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | {cd %in}
+cd ..
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | {cd %in}
+ls
+pwd
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | print}
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | print
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | cd
+pwd
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | print
+help cd
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | print
+help path
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | path basename
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | <\n>path dirname
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path 
+open .markfile | lines | each {|line| parse "{mark}={path}" } | reduce {|a,x| ($x | append $a) } | upsert path {|| ( $in | path parse) } | where mark == aoc | first |<\n>get path | describe
+help path
+ls
+dc
+ll
+ls
+cd .mydotfiles/
+ls
+mkdir nushell
+cd nushell/
+ls
+cp ~/.config/nushell/* .
+ls
+cp ~/.config/nushell/* .
+cp /r ~/.config/nushell/* .
