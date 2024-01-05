@@ -1,4 +1,24 @@
 # This file gets sourced if nu is opend as login shell
-# I will define my custom scripts here.
 
-source "~/.mydotfiles/nushell/functions.nu"
+# Load nu-spells
+source docker.nu
+source git.nu
+
+# Load nu-modules
+use todo.nu
+
+# aliases
+alias dc = docker compose
+alias ll = ls -al
+alias vim = nvim
+
+alias dotfiles = cd $env.DOTFILES
+alias spells = cd $env.SPELLS
+
+alias cat = bat
+
+alias tl = tmux list-sessions
+alias ta = tmux attach -t
+alias ts = tmux new-session -s
+
+alias sys-update = sudo pacman -Syu --noconfirm

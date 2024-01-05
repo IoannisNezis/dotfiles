@@ -760,5 +760,3 @@ $env.config = {
         }
     ]
 }
-
-source ~/.mydotfiles/nushell/aliases.nu
