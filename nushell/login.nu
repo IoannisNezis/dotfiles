@@ -1,12 +1,14 @@
 # This file gets sourced if nu is opend as login shell
 
+#============================
 # Load nu-spells
 source docker.nu
 source git.nu
 
-# Load nu-modules
-use todo.nu
+#============================
+use todo
 
+#===========================
 # aliases
 alias dc = docker compose
 alias ll = ls -al
