@@ -1,80 +1,104 @@
-export def load [
-    --todos (-t) # load only the todo items
-] nothing -> table {
-    let data = open $env.TODO.CONFIG.todo-file-path 
-    let todos = $data | get todos | upsert created {|| $in | into datetime} | upsert closed {|x| $x.closed | into datetime }
-    $data | upsert todos {$todos}
-}
-
-def store [] table -> nothing {
-    save -f $env.TODO.CONFIG.todo-file-path
-}
-
-export def is_closed [todo: record] nothing -> bool {
-    (load | get todos | filter {|elem| $elem == $todo } | length) >= 1
-}
-
-export def is_open [todo: string] nothing -> bool {
-    (load | get open | filter {|elem| $elem == $todo } | length) >= 1
-}
-
-export def "list open" [] nothing -> table {
-    load | get todos | filter {|todo| $todo.closed == null}  | reject closed
-}
-
-export def "list closed" [] nothing -> table {
-    load | get todos | filter {|todo| $todo.closed != null}
-}
-
-# Add a ToDo to the 'open' list
-export def add [task: string] {
-    let data = load
-    let next_id = $data | get next_todo_id
-    let todo = {id: $next_id, task: $task, created: (date now), closed: null}
-    {next_todo_id: ($next_id + 1), todos: ($data | get todos | append $todo )} | store
-
-    list open
-}
-
-
-# Move a ToDo from 'open' to 'closed'
-export def close [
-    todo?: string # Task of the ToDo
-    --identifier (-i): int # ID of the ToDo to close 
-] {
-    if $identifier != null {
-	let data = load
-	let updated_todo = $data | get todos | where id == $identifier | upsert closed (date now)
-
-	$data | upsert todos  ($updated_todo | append ($data | get todos | filter {|| $in.id != $identifier})) | store
-    }
-    if ($todo != null) {
-	if not (is_open $todo) {
-	    print $"The ToDo \"($todo)\" is not open"
-	    return 
-	}
- sf	load | upsert open {|todos| ($todos.open | filter {|item| $item != $todo})} | store
-	load | upsert closed {|| $in | append $todo} | store	
-    }
-    list open
-}
-
-
-export def main [] {
-    list open
-}
-
-
+use utils.nu * 
+export use namespaces.nu *
 # Very strange behaviour the env vars CURRENT_FILE are only avalible
 # if i define export-env ...
 # also this gets called when 'use' is called, i will use it as a setup funktion
 export-env {
-    let todo_file = $env | get CURRENT_FILE | path join 'todos.yaml'
-    $env.TODO.CONFIG = {
-	todo-file-path: $todo_file
+    let tables_file = $env | get CURRENT_FILE | path join 'tables.yaml'
+    let tables = [todos namespaces]
+    $env.todo.tables = ($tables | each {|table| {name: $table, file: ($env.CURRENT_FILE | path join $'($table).yaml'), next_id:0}})
+   
+   for table in $tables {
+	let file = $env.todo.tables | where name == $table | get 0.file
+	if not ($file | path exists) {
+	   "" | save $file
+	}
+	if ($file | open | length) > 0 {
+	    let max_id  = $file | open | select id? | sort | reverse | get 0?.id
+	    if $max_id != null {
+		$env.todo.tables = ($env.todo.tables | upsert next_id {|row| (if $row.name == $table {$max_id + 1} else { $row.next_id })})
+	    }
+	}
+	
     }
+    if (db_file namespaces | open | length) == 0 or (db_file namespaces | open | where name == root | length) == 0 {
+	[{id: 0, name: root, parent: null, created: (date now)}] | save --append (db_file namespaces)
+    }
+    $env.todo.namespace_file = ($env | get CURRENT_FILE | path join namespace)
+    if not ($env.todo.namespace_file | path exists) {
+	0 | save $env.todo.namespace_file
+    }
+    $env.todo.namespace =  ($env.todo.namespace_file | open)
+}
 
-    if not ($todo_file | path exists) {
-	{next_todo_id: 0, todos: []} | save $todo_file
+def load [] nothing -> table {
+    let data = ((db_file todos) | open)
+    $data | upsert created {|| $in | into datetime } | upsert closed {|| if $in != null {$in | into datetime }}
+}
+
+export def fill_namespace [] {
+    upsert namespace {|todo| (open (db_file namespaces)) | where id == $todo.namespace | (first).name}
+}
+
+export def get_by_id [id: int] { 
+    load | where id == $id | get 0?
+}
+# returns true if the ToDo is whithin the active namespace otherwise false
+export def is_active [id: int] int -> bool {
+    let todo = (get_by_id $id)
+    let active_namespace = (active)
+    $todo.namespace == $active_namespace.id or (is_decendant $todo.namespace (active).id)
+}
+
+export def in_scope [ns_id: int, ids: table<id: int>] {
+    ($ids | where id == $ns_id | length) == 1
+}
+
+export def list [
+    --all (-a) # list closed and open
+    --closed (-c) # list closed ToDo's
+    --global (-g)
+] {
+    let scope = (active scope | select id)
+    load
+    | filter {|todo| ($all or ((not $closed) and $todo.closed == null) or ($closed and $todo.closed != null)) }
+    | filter {|todo| $global or (in_scope $todo.namespace $scope)}
+    | fill_namespace
+   
+ #   if $closed {
+	# load | filter {|todo| $todo.closed != null}
+ #    }
+
+   # $res |  filter {|todo| $todo.closed == null}  | reject closed
+}
+
+# Add a ToDo to the 'open' list
+export def --env new [task: string] {
+    let next_id = inc_id todos
+    let todo = {id: $next_id, task: $task, namespace: (active).id, created: (date now), closed: null}
+    [$todo] | save --append (db_file todos)
+    list
+}
+
+# Move a ToDo from 'open' to 'closed'
+export def close [
+    todo_id: int # ID Task of the ToDo to close
+] {
+    load | upsert closed {|todo| if $todo.id == $todo_id { date now } else {$todo.closed}} | store todos
+    list
+}
+
+
+export def main [
+    --all (-a) # list all task
+    --closed (-c) # list all closed tasks
+] {
+    print {active: (active).name, parent: (parent | get name?)}
+    if $all {
+	load | table -e
+    } else if $closed {
+	list --closed
+    } else {
+	list
     }
 }
