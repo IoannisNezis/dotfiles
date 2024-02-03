@@ -1,0 +1,159 @@
+		##################
+		# General Section #
+		###################
+import = [
+	"~/.config/alacritty/keybindings.tml",
+]
+
+live_config_reload = true
+
+[shell]
+program = "/usr/bin/nu"
+args = ["--login"]
+
+
+
+		#######
+		# ENV #
+		#######
+[env]
+EXAMPLE_ENV_VAR = "FOO"
+
+		##########
+		# WINDOW #
+		##########
+[window]
+title = "Alacritty"
+dynamic_padding = false
+decorations = "Full" # not sure what this does...
+opacity = 0.75
+blur = true
+startup_mode = "Windowed"
+padding = { x = 7, y = 7}
+class = { instance = "Alacritty", general = "Alacritty"}
+
+		##########
+		# WINDOW #
+		##########
+[scrolling]
+history = 42000
+multiplier = 3
+
+		########
+		# FONT #
+		########
+[font]
+  size = 13.0
+  offset = { x = 0, y = 0 } # change for cursed experience
+  glyph_offset = { x = 0, y=0 }
+  builtin_box_drawing = true # Not sure what it does
+  [font.normal]
+  family = "Source Code Pro"
+  style = "Regular"
+  [font.bold]
+  style = "Bold" # Fallback to normal font family
+  [font.italic]
+  style = "Italic" # Fallback to normal font family
+
+		##########
+		# COLORS #
+		##########
+[colors]
+transparent_background_colors = false
+ [colors.primary]
+ foreground = "#c5c8c6"
+ background = "#1d1f21"
+ # dim_foreground = "#0000ff" # unknown effect
+ bright_foreground = "#ffffff"
+
+ [colors.cursor]
+ cursor= "CellForeground"
+ text = "CellBackground" # color of text under the cursor
+
+ [colors.vi_mode_cursor] # vi mode is entered: CTRL + Shift + Space
+ cursor= "CellForeground"
+ text = "CellBackground"
+
+# Theme: Elementary
+ [colors.normal]
+ black   = "#303030"
+ red     = "#E1321A"
+ green   = "#6AB017"
+ yellow  = "#FFC005"
+ blue    = "#004F9E"
+ magenta = "#EC0048"
+ cyan    = "#2AA7E7"
+ white   = "#F2F2F2"
+
+[colors.bright]
+ black   = "#5D5D5D"
+ red     = "#FF361E"
+ green   = "#7BC91F"
+ yellow  = "#FFD00A"
+ blue    = "#0071FF"
+ magenta = "#FF1D62"
+ cyan    = "#4BB8FD"
+ white   = "#A020F0"
+
+		########
+		# BELL #
+		########
+[bell]
+animation = "EaseOut"
+duration = 0 # >0 for shit experince
+color = "#ffffff"
+# command =  { program = "notify-send", args = ["-t", "1000","--urgency", "critical", "SHIT"] }
+
+		#############
+		# SELECTION #
+		#############
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>t"
+save_to_clipboard = false # this is done in tmux
+
+
+		##########
+		# CURSOR #
+		##########
+[cursor]
+blink_interval = 700
+blink_timeout = 5
+unfocused_hollow = true
+thickness = 0.15
+ [cursor.style]
+ shape = "Block"
+ blinking = "On" # Not sure when curser blinks...
+
+		############
+		# TERMINAL #
+		############
+[terminal]
+osc52 = "OnlyCopy" # Escape sequence that allows to access clipboard
+
+
+		#########
+		# MOUSE #
+		#########
+[mouse]
+hide_when_typing = true
+# bindings = [
+# { mouse = "Right", mods = "Control", action = "Paste" },
+# ]
+
+		############
+		# KEYBOARD #
+		############
+[keyboard]
+bindings = [
+{ key = "V", mods = "Control|Shift", action = "Paste" },
+{ key = "L", mods = "Control|Shift", chars = "l" },
+]
+
+		#########
+		# DEBUG #
+		#########
+[debug]
+render_timer = false
+persistent_logging = false
+log_level = "Info"
+print_events = false
