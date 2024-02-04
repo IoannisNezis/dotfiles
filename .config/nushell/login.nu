@@ -7,6 +7,7 @@ source git.nu
 
 #============================
 use todo
+use monitors
 
 #===========================
 # aliases
