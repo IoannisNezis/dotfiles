@@ -1,10 +1,16 @@
 $surface-darkgrey: #20252b;
+$primary: #20252b;
+$secondary: #ffffff;
 $surface-fg: #949494;
 $surface-lightgrey: #3d464e;
 $surface-grey: #2b3238;
 $surface-red: #f87070;
 
-* { all: unset; }
+* {
+  all: unset;
+  font-family: feather;
+  font-family: DaddyTimeMono NF;
+}
 
 .layout-box {
   font-family: Phosphor, Koulen;
@@ -14,56 +20,32 @@ $surface-red: #f87070;
   color: rgba($surface-fg, 0.8);
 }
 
-.net-box,
-.bat-box,
-.tm-box {
-  label {
-    font-size: 2em;
+.bar {
+  margin-top: 10px;
+  padding: 0px 10px;
+  border-radius: 7px;
+  background-color: rgba($color: $surface-darkgrey, $alpha: 0.9);
+}
+
+.debug {
+  background-color: rgba($color: $surface-red, $alpha: 1.0);
+  border: 1px solid $surface-darkgrey;
+}
+
+.workspace-indicator {
+  background-color: rgba($color: $surface-grey, $alpha: 1.0);
+  border-radius: 40px;
+  border: 3px solid #000000;
+  padding: 6px;
+  margin-right: 4px;
+  &.active {
+   background-color: rgba($secondary, 0.7);
   }
 }
 
-.close-btn {
-  font-size: 2em;
-  &:hover {
-    color: $surface-red;
-  }
+
+.clock_minute {
+  padding: 10px;
+  // background-color: rgba($color: $surface-grey, $alpha: 0.9);
+  border-radius: 10px;
 }
-
-.btns-box {
-  font-size: 2.5em;
-
-  button {
-    padding: 0.4em;
-    border-radius: 0.1em;
-    background-color: rgba($surface-darkgrey, 0.3);
-
-    &:hover {
-      transition: 200ms linear background-color, border-radius;
-      background-color: rgba($surface-lightgrey, 0.6);
-    }
-
-    &:first-child {
-      color: rgba($surface-red, 0.8);
-    }
-  }
-}
-
-.sep {
-  font-size: 1em;
-  padding-top: 0.15em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  font-family: Iosevka;
-  font-weight: 400;
-}
-
-.sundial-lbl {
-  font-size: 1.5em;
-  font-weight: bold;
-  border-radius: 0.2em;
-  padding: 0.4em;
-  padding-bottom: 0.5em;
-  font-family: "Poiret One";
-}
-
-// vim:ft=scss
