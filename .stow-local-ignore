@@ -2,4 +2,4 @@
 ^/justfile
 \.git
 \.gitignore
-
+.gitmodules
