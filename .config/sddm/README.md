@@ -4,13 +4,12 @@ For more information check [this](https://wiki.archlinux.org/title/SDDM) page.
 # Theme
 
 I used the sugar-candy theme, this can be found [here](https://github.com/Kangie/sddm-sugar-candy).
-The theme has to be availibale without login credentials...
-the location of the themes is `/usr/share/sddm/themes/`
+the themes are stored here `/usr/share/sddm/themes/`
 
 # Installation
 
 1. Create a symlink in `/etc/sddm.conf.d/` to the local conf file.
-2. Copy the theme to `/usr/share/sddm/themes`
+2. Create a symlink int `/usr/share/sddm/themes` to the local theme.
 
 Here is a a command to do both:
 ```bash
