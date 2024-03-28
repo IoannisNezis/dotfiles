@@ -1,9 +1,26 @@
 sddm is a display manager that is compatible with hyprland.
 For more information check [this](https://wiki.archlinux.org/title/SDDM) page.
 
-# Dependency
+# Theme
+
 I used the sugar-candy theme, this can be found [here](https://github.com/Kangie/sddm-sugar-candy).
-Clone it and copy in the sddm themes folder: `/usr/share/sddm/themes/`
+The theme has to be availibale without login credentials...
+the location of the themes is `/usr/share/sddm/themes/`
 
 # Installation
-create a symlink in `/etc/sddm.conf.d/` to the local conf file.
+
+1. Create a symlink in `/etc/sddm.conf.d/` to the local conf file.
+2. Copy the theme to `/usr/share/sddm/themes`
+
+Here is a a command to do both:
+```bash
+just install
+```
+
+# Update changes
+
+When the theme is updated in these docfiles it needs to be copied again.
+To save you some valuable seconds, here is a command to do that:
+```bash
+just update
+```

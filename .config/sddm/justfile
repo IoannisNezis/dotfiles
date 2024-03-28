@@ -1,0 +1,5 @@
+install: update
+	sudo ln -sf sddm.config /etc/sddm.conf.d/sddm.config
+
+update:
+	sudo cp -r sugar-candy/ /usr/share/sddm/themes/
