@@ -1,0 +1,3 @@
+[submodule ".config/sddm/sugar-candy"]
+	path = .config/sddm/sugar-candy
+	url = git@github.com:Kangie/sddm-sugar-candy.git
