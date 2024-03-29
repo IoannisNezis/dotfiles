@@ -35,7 +35,7 @@
 (defvar workspaces "[1,2,3,4,5,6,7,8,9,10]")
 (deflisten activeworkspace
            :initial 1
-           `./bin/eww_hypr_socket_listener`
+           `./utils/bin/hyprland_socker_listener workspace`
 )
 
 (defwidget workspaces [] 
