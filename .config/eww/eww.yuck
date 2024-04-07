@@ -16,10 +16,11 @@
   ) 
 )
 
-(deflisten title :initial "music"
+(deflisten title :initial "title"
   `playerctl --follow metadata --format {{title}}`
 )
-(deflisten artist :initial "music"
+
+(deflisten artist :initial "artist"
   `playerctl --follow metadata --format {{artist}}`
 )
 
@@ -27,7 +28,7 @@
 (defwidget music []
   (box
     (label
-      :text "${artist} : ${title}"
+      :text "🎵${artist} | ${title}"
     )
   )
 )
@@ -48,7 +49,6 @@
     )
   )
 )
-       
 
 (defwidget clock []
   (box 
