@@ -48,7 +48,7 @@ multiplier = 3
   glyph_offset = { x = 0, y=0 }
   builtin_box_drawing = true # Not sure what it does
   [font.normal]
-  family = "Source Code Pro"
+  family = "Hack Nerd Font"
   style = "Regular"
   [font.bold]
   style = "Bold" # Fallback to normal font family
