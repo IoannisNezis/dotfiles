@@ -2,7 +2,6 @@
 
 #============================
 # Load nu-spells
-source docker.nu
 source git.nu
 
 #============================
