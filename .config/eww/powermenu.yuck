@@ -1,0 +1,66 @@
+(defwidget foo []
+  (label :text "bar/nbar")
+)
+
+(defwindow powermenu
+  :geometry (geometry 
+    :x "0.5%"
+    :width "10%"
+    :anchor "top right")
+    :stacking "fg"
+    :exclusive true
+    :focusable false
+    :namespace "eww"
+  (box
+    :halign "end"
+    :class "menu"
+    (box :class "mx-1"
+     (lock)
+    )
+    (box :class "mx-1"
+      (reboot)
+    )
+    (box :class "mx-1"
+      (shutdown)
+    )
+  ) 
+)
+
+(defwidget shutdown []
+  (eventbox
+    :halign "end"
+    :valign "center"
+    :class "button"
+    :cursor "pointer"
+    :width 30
+    :height 30
+    :onclick `shutdown -h now`
+    (label :text "⏻")
+  )
+)
+
+(defwidget reboot []
+  (eventbox
+    :halign "end"
+    :valign "center"
+    :class "button"
+    :cursor "pointer"
+    :width 30
+    :height 30
+    :onclick `reboot`
+    (label :text "↺")
+  )
+)
+
+(defwidget lock []
+  (eventbox
+    :halign "end"
+    :valign "center"
+    :class "button"
+    :cursor "pointer"
+    :width 30
+    :height 30
+    :onclick `hyprlock &`
+    (image :path "${EWW_CONFIG_DIR}/assets/lock.svg")
+  )
+)

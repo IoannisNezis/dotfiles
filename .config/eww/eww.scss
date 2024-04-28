@@ -1,6 +1,10 @@
-$surface-darkgrey: #20252b;
+$darkgrey: #20252b;
+$black: #000000;
+$white: #ffffff;
+$green: #14F5A2;
+$yellow: #FEEE00; 
+$red: #FB2632;
 $primary: #20252b;
-$secondary: #ffffff;
 $surface-fg: #949494;
 $surface-lightgrey: #3d464e;
 $surface-grey: #2b3238;
@@ -9,7 +13,6 @@ $surface-red: #f87070;
 * {
   all: unset;
   font-family: feather;
-  font-family: DaddyTimeMono NF;
 }
 
 .layout-box {
@@ -21,30 +24,73 @@ $surface-red: #f87070;
 }
 
 .bar {
-  margin-top: 10px;
-  padding: 0px 10px;
+  margin-top: 5px;
+  padding: 3px 10px;
   border-radius: 7px;
-  background-color: rgba($color: $surface-darkgrey, $alpha: 0.9);
+  // background-color: rgba($color: $darkgrey, $alpha: 0.9);
+}
+
+.menu {
+  margin-top: 5px;
+  padding: 9px;
+  border-radius: 10px;
+  background-color: rgba($color: $darkgrey, $alpha: 0.9);
+}
+
+.foo {
+  padding: 7px;
+  border-radius: 15px;
+  background-color: rgba($color: $black, $alpha: 0.4);
+}
+
+.button {
+  color: rgba($color: $red, $alpha: 0.8);
+  background-color: rgba($color: $black, $alpha: 0.4);
+  font-size: 20px;
+  border-radius: 8px;
+
+  &:hover {
+    color: yellow;
+    color: $red;
+    background-color: rgba($color: $black, $alpha: 0.5);
+  }
 }
 
 .debug {
   background-color: rgba($color: $surface-red, $alpha: 1.0);
-  border: 1px solid $surface-darkgrey;
+  border: 1px solid $darkgrey;
 }
 
 .workspace-indicator {
-  background-color: rgba($color: $surface-grey, $alpha: 1.0);
-  border-radius: 40px;
-  border: 3px solid #000000;
-  padding: 6px;
-  margin-right: 4px;
+  background-color: rgba($color: $darkgrey, $alpha: 1.0);
+  border-radius: 20px;
+  padding: 4px 4px;
+  margin: 0px 3px;
+
   &.active {
-   background-color: rgba($secondary, 0.7);
+    background-color: rgba($green, 0.7);
+    padding: 6px 6px;
+    border-radius: 20px;
   }
 }
 
-.clock_minute {
-  padding: 10px;
+.clock_time {
+  font-family: DaddyTimeMono;
+  padding: 0px 10px;
   // background-color: rgba($color: $surface-grey, $alpha: 0.9);
   border-radius: 10px;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.text-color-yellow {
+  color: #FEEE00;
 }

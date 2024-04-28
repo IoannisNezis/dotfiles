@@ -1,8 +1,10 @@
+(include "./powermenu.yuck")
+
 (defwindow topbar
   :geometry (geometry 
     :x "0%"
     :y "0%"
-    :width "96%"
+    :width "99%"
     :anchor "top center")
     :stacking "bottom"
     :exclusive true
@@ -11,29 +13,26 @@
   (box 
     :class "bar"
     (workspaces)
-    (music)
     (clock)
+    (powerbutton)
   ) 
 )
 
-(deflisten title :initial "title"
-  `playerctl --follow metadata --format {{title}}`
-)
-
-(deflisten artist :initial "artist"
-  `playerctl --follow metadata --format {{artist}}`
-)
-
-
-(defwidget music []
-  (box
-    (label
-      :text "🎵${artist} | ${title}"
-    )
+(defwidget powerbutton []
+  (eventbox
+    :halign "end"
+    :valign "center"
+    :class "button text-color-yellow"
+    :cursor "pointer"
+    :width 30
+    :height 30
+    :onclick `eww open powermenu --screen 0`
+    (label :text "🗲")
   )
 )
 
 (defvar workspaces "[1,2,3,4,5,6,7,8,9,10]")
+(defvar test 8)
 (deflisten activeworkspace
            :initial 1
            `./utils/bin/hyprland_socker_listener workspace`
@@ -42,8 +41,11 @@
 (defwidget workspaces [] 
   (box :halign "start"
        :valign "center"
+       :class "foo"
     (for workspace in workspaces
       (box
+        :valign "center"
+        :halign "center"
         :class "workspace-indicator ${activeworkspace == workspace ? "active" : ""}"
       )
     )
@@ -53,10 +55,11 @@
 (defwidget clock []
   (box 
     :orientation "horizontal"
-    :halign "end"
+    :halign "center"
+    :class "foo"
     (label
-      :class "clock_minute"
-      :text {formattime(EWW_TIME, "%A %H:%M")}
+      :class "clock_time"
+      :text {formattime(EWW_TIME, "%H:%M")}
     )
   )
 )
