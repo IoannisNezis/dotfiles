@@ -241,11 +241,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Theme ]]
 require('onedark').setup {
-    style = 'deep',
+  style = 'deep',
+  transparent = true,
+  lualine = {
     transparent = true,
-    lualine = {
-        transparent = true,
-    },
+  },
 }
 require('onedark').load()
 
@@ -265,7 +265,7 @@ require('telescope').setup {
 -- [[ Configure Neoscroll]]
 require('neoscroll').setup({
   hide_cursor = false,
-	mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+  mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
 })
 
 
@@ -342,7 +342,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust','elixir','eex', 'heex', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'nu', 'svelte', 'http', 'vue'},
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'elixir', 'eex', 'heex', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'nu', 'svelte', 'http', 'vue' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -407,20 +407,20 @@ end, 0)
 
 
 -- [[ Configure Notify ]]
-  require("noice").setup({
-    views = {
-      cmdline_popup = {
-        border = {
-          style = "none",
-          padding = { 2, 3 },
-        },
-        filter_options = {},
-        win_options = {
-          winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-        },
+require("noice").setup({
+  views = {
+    cmdline_popup = {
+      border = {
+        style = "none",
+        padding = { 2, 3 },
+      },
+      filter_options = {},
+      win_options = {
+        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
       },
     },
-  })
+  },
+})
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -596,4 +596,3 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
