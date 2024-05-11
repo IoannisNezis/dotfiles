@@ -10,7 +10,7 @@ return {
 	end,
 	config = function ()
 		require("silicon").setup({
-			font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+			font = "Hack Nerd Font=34;Noto Color Emoji=34",
 			theme = "Dracula",
 			background = "#94e2d5",
 			window_title = function ()
