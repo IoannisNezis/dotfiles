@@ -14,8 +14,36 @@
     :class "bar"
     (workspaces)
     (clock)
-    (powerbutton)
+    (battery)
   ) 
+)
+
+
+(defwidget battery []
+  (box
+       :valign "center"
+       :halign "end"
+       :space-evenly false
+    (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${EWW_BATTERY["BAT0"].status == "Discharging" ? "battery.svg" : "bolt.svg"}")
+    (box
+      :space-evenly false
+      (box
+        :height 14
+        :width "${EWW_BATTERY["BAT0"].capacity}"
+        :valign "center"
+        :halign "end"
+        :class "powerbar-full"
+      )
+      (box
+        :height 14
+        :width "${100-EWW_BATTERY["BAT0"].capacity}"
+        :valign "center"
+        :halign "start"
+        :class "powerbar-empty"
+      )
+    )
+    (label :class "mx-2" :halign "end" :text "${EWW_BATTERY["BAT0"].capacity}%")
+  )
 )
 
 (defwidget powerbutton []

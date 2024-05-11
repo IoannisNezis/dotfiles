@@ -4,6 +4,7 @@ $white: #ffffff;
 $green: #14F5A2;
 $yellow: #FEEE00; 
 $red: #FB2632;
+$gray: #64748b;
 $primary: #20252b;
 $surface-fg: #949494;
 $surface-lightgrey: #3d464e;
@@ -57,8 +58,17 @@ $surface-red: #f87070;
 }
 
 .debug {
-  background-color: rgba($color: $surface-red, $alpha: 1.0);
-  border: 1px solid $darkgrey;
+  border: 1px solid $surface-red;
+}
+
+.powerbar-full {
+  background-color: rgba($color: $green, $alpha: 1.0);
+  border-radius: 10px 0px 0px 10px;
+}
+
+.powerbar-empty {
+  background-color: rgba($color: $gray, $alpha: 1.0);
+  border-radius: 0px 10px 10px 0px;
 }
 
 .workspace-indicator {
