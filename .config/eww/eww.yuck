@@ -14,10 +14,33 @@
     :class "bar"
     (workspaces)
     (clock)
-    (battery)
+    (box
+      :space-evenly false
+      :spacing 7
+      :halign "end"
+      (wifi)
+      (audio)
+      (battery)
+    )
   ) 
 )
 
+(defwidget wifi []
+  (eventbox
+    :onclick "nm-connection-editor &"
+    :cursor "pointer"
+    (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/wifi.svg")
+  )
+)
+
+(defpoll muted :interval "1s" "pamixer --get-mute")
+(defwidget audio []
+  (eventbox
+      :onclick "pamixer --toggle-mute"
+      :cursor "pointer"
+      (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${muted == "true" ? "sound-off.svg" : "sound-on.svg"}")
+  )
+)
 
 (defwidget battery []
   (box
@@ -26,6 +49,7 @@
        :space-evenly false
     (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${EWW_BATTERY["BAT0"].status == "Discharging" ? "battery.svg" : "bolt.svg"}")
     (box
+      :class "ml-2"
       :space-evenly false
       (box
         :height 14
@@ -70,11 +94,12 @@
   (box :halign "start"
        :valign "center"
        :class "foo"
+       :space-evenly false
     (for workspace in workspaces
       (box
         :valign "center"
         :halign "center"
-        :class "workspace-indicator ${activeworkspace == workspace ? "active" : ""}"
+        :class "ml-2 workspace-indicator ${activeworkspace == workspace ? "active" : ""}"
       )
     )
   )
