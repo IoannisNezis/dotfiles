@@ -1,5 +1,6 @@
 (include "./powermenu.yuck")
 
+
 (defwindow topbar
   :geometry (geometry 
     :x "0%"
@@ -20,25 +21,47 @@
       :halign "end"
       (wifi)
       (audio)
+      (mem)
+      (cpu)
       (battery)
     )
   ) 
 )
 
+
+(defvar wifi-interface "wlan0")
+
+
 (defwidget wifi []
   (eventbox
     :onclick "nm-connection-editor &"
     :cursor "pointer"
-    (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/wifi.svg")
+    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/wifi.svg")
   )
 )
 
 (defpoll muted :interval "1s" "pamixer --get-mute")
-(defwidget audio []
+(defwidget audio [] 
   (eventbox
       :onclick "pamixer --toggle-mute"
       :cursor "pointer"
-      (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${muted == "true" ? "sound-off.svg" : "sound-on.svg"}")
+      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${muted == "true" ? "sound-off.svg" : "sound-on.svg"}")
+  )
+)
+
+(defwidget mem []
+  (box
+    :space-evenly false
+    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/mem.svg")
+    (bar :value "${EWW_RAM.used_mem / EWW_RAM.total_mem * 100}")
+  )
+)
+
+(defwidget cpu []
+  (box
+    :space-evenly false
+    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/cpu.svg")
+    (bar :value "${EWW_CPU["avg"]}")
   )
 )
 
@@ -47,26 +70,32 @@
        :valign "center"
        :halign "end"
        :space-evenly false
-    (image :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${EWW_BATTERY["BAT0"].status == "Discharging" ? "battery.svg" : "bolt.svg"}")
+
+    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${EWW_BATTERY["BAT0"].status == "Discharging" ? "battery.svg" : "bolt.svg"}")
+    (bar :value "${EWW_BATTERY["BAT0"].capacity}")
+  )
+)
+
+(defvar barScalar 1.4)
+
+(defwidget bar [value]
+  (box
+    :class "ml-2"
+    :space-evenly false
     (box
-      :class "ml-2"
-      :space-evenly false
-      (box
-        :height 14
-        :width "${EWW_BATTERY["BAT0"].capacity}"
-        :valign "center"
-        :halign "end"
-        :class "powerbar-full"
-      )
-      (box
-        :height 14
-        :width "${100-EWW_BATTERY["BAT0"].capacity}"
-        :valign "center"
-        :halign "start"
-        :class "powerbar-empty"
-      )
+      :height 8
+      :width "${round(value / barScalar, 0)}"
+      :valign "center"
+      :halign "end"
+      :class "powerbar-full"
     )
-    (label :class "mx-2" :halign "end" :text "${EWW_BATTERY["BAT0"].capacity}%")
+    (box
+      :height 8
+      :width "${round((100-value) / barScalar, 0) }"
+      :valign "center"
+      :halign "start"
+      :class "powerbar-empty bg-gray"
+    )
   )
 )
 
@@ -84,7 +113,6 @@
 )
 
 (defvar workspaces "[1,2,3,4,5,6,7,8,9,10]")
-(defvar test 8)
 (deflisten activeworkspace
            :initial 1
            `./utils/bin/hyprland_socket_listener workspace`
@@ -94,12 +122,12 @@
   (box :halign "start"
        :valign "center"
        :class "foo"
-       :space-evenly false
+       :space-evenly true
     (for workspace in workspaces
       (box
         :valign "center"
         :halign "center"
-        :class "ml-2 workspace-indicator ${activeworkspace == workspace ? "active" : ""}"
+        :class "workspace-indicator ${activeworkspace == workspace ? "active" : ""}"
       )
     )
   )

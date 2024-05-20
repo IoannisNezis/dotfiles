@@ -2,7 +2,7 @@ $darkgrey: #20252b;
 $black: #000000;
 $white: #ffffff;
 $green: #14F5A2;
-$yellow: #FEEE00; 
+$yellow: #FEEE00;
 $red: #FB2632;
 $gray: #64748b;
 $primary: #20252b;
@@ -67,8 +67,15 @@ $surface-red: #f87070;
 }
 
 .powerbar-empty {
-  background-color: rgba($color: $gray, $alpha: 1.0);
   border-radius: 0px 10px 10px 0px;
+}
+
+.bg-gray {
+  background-color: rgba($color: $gray, $alpha: 1.0);
+}
+
+.bg-red {
+  background-color: rgba($color: $red, $alpha: 1.0);
 }
 
 .workspace-indicator {
