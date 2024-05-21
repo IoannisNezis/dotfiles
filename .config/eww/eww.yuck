@@ -13,35 +13,64 @@
     :namespace "eww"
   (box 
     :class "bar"
-    (workspaces)
+    (box 
+      :space-evenly false
+      :spacing 10
+      (workspaces)
+      (wifi)
+    )
     (clock)
     (box
       :space-evenly false
       :spacing 7
       :halign "end"
-      (wifi)
       (audio)
       (mem)
       (cpu)
       (battery)
     )
-  ) 
+  )
 )
 
-
 (defvar wifi-interface "wlan0")
-
+(defpoll network :interval "1s" "iwgetid -r")
 
 (defwidget wifi []
-  (eventbox
-    :onclick "nm-connection-editor &"
-    :cursor "pointer"
-    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/wifi.svg")
+  (box
+    :space-evenly false
+    (eventbox
+      :onclick "nm-connection-editor &"
+      :cursor "pointer"
+      (box
+        :space-evenly false
+        :class "bg-black rounded-lg px-2"
+        (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/wifi.svg")
+        (label :class "mx-1" :text network)
+      )
+    )
+    (box
+      :space-evenly false
+      :class "mx-1 px-2 bg-black rounded-lg"
+      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/down.svg")
+      (label 
+        :class "ms-1"
+        :text "${round(EWW_NET["wlan0"]["NET_DOWN"]/1024, 1)} KiB"
+      )
+    )
+    (box
+      :space-evenly false
+      :class "mx-1 px-2 bg-black rounded-lg"
+      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/up.svg")
+      (label 
+        :class "ms-1"
+        :text "${round(EWW_NET["wlan0"]["NET_UP"]/1024, 1)} KiB"
+      )
+    )
   )
 )
 
 (defpoll muted :interval "1s" "pamixer --get-mute")
-(defwidget audio [] 
+(defwidget audio []
   (eventbox
       :onclick "pamixer --toggle-mute"
       :cursor "pointer"
@@ -53,7 +82,10 @@
   (box
     :space-evenly false
     (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/mem.svg")
-    (bar :value "${EWW_RAM.used_mem / EWW_RAM.total_mem * 100}")
+    (bar 
+      :value "${EWW_RAM.used_mem / EWW_RAM.total_mem * 100}"
+      :c1 "bg-red"
+    )
   )
 )
 
@@ -61,10 +93,15 @@
   (box
     :space-evenly false
     (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/cpu.svg")
-    (bar :value "${EWW_CPU["avg"]}")
+    (bar 
+      ;; :value "${EWW_CPU["avg"]}"
+      :value 10
+      :c1 "bg-yellow"
+    )
   )
 )
 
+(defvar batteryThreshold 25)
 (defwidget battery []
   (box
        :valign "center"
@@ -72,13 +109,17 @@
        :space-evenly false
 
     (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${EWW_BATTERY["BAT0"].status == "Discharging" ? "battery.svg" : "bolt.svg"}")
-    (bar :value "${EWW_BATTERY["BAT0"].capacity}")
+    (bar 
+      :value "${EWW_BATTERY["BAT0"].capacity}"
+      :c1 "bg-green"
+      :c2 "${EWW_BATTERY["BAT0"].capacity < batteryThreshold ? "bg-red" : "bg-gray"}"
+    )
   )
 )
 
-(defvar barScalar 1.4)
+(defvar barScalar 1.2)
 
-(defwidget bar [value]
+(defwidget bar [value ?c1 ?c2]
   (box
     :class "ml-2"
     :space-evenly false
@@ -87,14 +128,14 @@
       :width "${round(value / barScalar, 0)}"
       :valign "center"
       :halign "end"
-      :class "powerbar-full"
+      :class "rounded-s-lg ${c1 == "" ? "bg-green": c1}"
     )
     (box
       :height 8
       :width "${round((100-value) / barScalar, 0) }"
       :valign "center"
       :halign "start"
-      :class "powerbar-empty bg-gray"
+      :class "rounded-e-lg ${c2 == "" ? "bg-gray": c2}"
     )
   )
 )

@@ -61,21 +61,40 @@ $surface-red: #f87070;
   border: 1px solid $surface-red;
 }
 
-.powerbar-full {
-  background-color: rgba($color: $green, $alpha: 1.0);
-  border-radius: 10px 0px 0px 10px;
+.rounded {
+  border-radius: 5px;
 }
 
-.powerbar-empty {
+.rounded-lg {
+  border-radius: 10px;
+}
+
+.rounded-e-lg {
   border-radius: 0px 10px 10px 0px;
+}
+
+.rounded-s-lg {
+  border-radius: 10px 0px 0px 10px;
 }
 
 .bg-gray {
   background-color: rgba($color: $gray, $alpha: 1.0);
 }
 
+.bg-black {
+  background-color: rgba($color: $black, $alpha: 1.0);
+}
+
 .bg-red {
   background-color: rgba($color: $red, $alpha: 1.0);
+}
+
+.bg-green {
+  background-color: rgba($color: $green, $alpha: 1.0);
+}
+
+.bg-yellow {
+  background-color: rgba($color: #ffcd05, $alpha: 1.0);
 }
 
 .workspace-indicator {
@@ -98,9 +117,18 @@ $surface-red: #f87070;
   border-radius: 10px;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
+}
+
+.ms-1 {
+  margin-left: 0.25rem;
 }
 
 .mx-2 {
