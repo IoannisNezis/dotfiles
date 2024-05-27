@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitor Battery deamon
+
+[Service]
+ExecStart=/home/ianni/.config/monitor-system/monitor-battery
+
+[Install]
+WantedBy=multi-user.target

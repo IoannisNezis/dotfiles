@@ -1,0 +1,5 @@
+install:
+	sudo ln -sf "${HOME}/.config/monitor-system/monitor-battery.service" "/etc/systemd/system/"
+	sudo systemctl enable monitor-battery.service
+	sudo systemctl enable monitor-battery.service
+
