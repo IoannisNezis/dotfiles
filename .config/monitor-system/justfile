@@ -1,5 +1,25 @@
+datadir := "~/.local/state/monitor-battery"
+datafile := "data.rdf"
+metrics_count := "4"
+
 install:
+	# mkdir {{datadir}}
+	sudo cp ./monitor-battery /bin/
 	sudo ln -sf "${HOME}/.config/monitor-system/monitor-battery.service" "/etc/systemd/system/"
 	sudo systemctl enable monitor-battery.service
-	sudo systemctl enable monitor-battery.service
 
+start:
+	sudo systemctl start monitor-battery.service
+
+stop:
+	sudo systemctl stop monitor-battery.service
+
+status:
+	#!/bin/nu
+	let measurement_count = (open {{datadir}}/{{datafile}} | lines | length) / {{metrics_count}}
+	let size = (ls {{datadir}} | where name =~ {{datafile}} | get size.0)
+
+	print $"Measurements: ($measurement_count)"
+	print $"Memory: ($size)"
+	print "Daemon status:"
+	systemctl status monitor-battery
