@@ -25,6 +25,7 @@
       :spacing 7
       :halign "end"
       (audio)
+      (temperature)
       (mem)
       (cpu)
       (battery)
@@ -34,6 +35,17 @@
 
 (defvar wifi-interface "wlan0")
 (defpoll network :interval "1s" "iwgetid -r")
+
+(defwidget temperature [] 
+  (box 
+    :space-evenly false
+    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/temperature.svg")
+    (bar 
+      :value "${EWW_TEMPS["THINKPAD_CPU"]}"
+      :c1 "${EWW_TEMPS["THINKPAD_CPU"] < 60 ? "bg-green" : "bg-red"}"
+    )
+  )
+)
 
 (defwidget wifi []
   (box
@@ -153,23 +165,33 @@
   )
 )
 
-(defvar workspaces "[1,2,3,4,5,6,7,8,9,10]")
+(defvar workspaces "[{\"id\": 1,\"icon\": \"mail.svg\"},{\"id\": 2,\"icon\": \"code.svg\"},{\"id\": 3,\"icon\": \"web.svg\"},{\"id\": 4,\"icon\": \"terminal.svg\"},{\"id\": 5,\"icon\": \"beaker.svg\"},{\"id\": 6,\"icon\": \"book.svg\"},{\"id\": 7,\"icon\": \"settings.svg\"},{\"id\": 8,\"icon\": \"rocket.svg\"},{\"id\": 9,\"icon\": \"music.svg\"},{\"id\": 10,\"icon\": \"chat.svg\"}]")
 (deflisten activeworkspace
            :initial 1
            `./utils/bin/hyprland_socket_listener workspace`
 )
 
 (defwidget workspaces [] 
-  (box :halign "start"
-       :valign "center"
-       :class "foo"
+  (box
+    :halign "start"
+    :valign "center"
+    :space-evenly false
+    (image :image-height 20 
+           :halign "end" 
+           :valign "center" 
+           :class "bg-black rounded-lg p-2 bg-purple mx-2 "
+           :path "${EWW_CONFIG_DIR}/assets/${workspaces[activeworkspace - 1].icon}"
+    )
+    (box
+       :class "rounded-lg bg-black p-2"
        :space-evenly true
-    (for workspace in workspaces
-      (box
-        :valign "center"
-        :halign "center"
-        :class "workspace-indicator ${activeworkspace == workspace ? "active" : ""}"
-      )
+       (for workspace in workspaces
+         (box
+          :valign "center"
+          :halign "center"
+          :class "workspace-indicator ${activeworkspace == workspace.id ? "active" : ""}"
+         )
+       )
     )
   )
 )

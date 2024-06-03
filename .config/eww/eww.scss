@@ -4,6 +4,7 @@ $white: #ffffff;
 $green: #14F5A2;
 $yellow: #FEEE00;
 $red: #FB2632;
+$purple: #a020f0;
 $gray: #64748b;
 $primary: #20252b;
 $surface-fg: #949494;
@@ -40,7 +41,6 @@ $surface-red: #f87070;
 
 .foo {
   padding: 7px;
-  border-radius: 15px;
   background-color: rgba($color: $black, $alpha: 0.4);
 }
 
@@ -82,11 +82,15 @@ $surface-red: #f87070;
 }
 
 .bg-black {
-  background-color: rgba($color: $black, $alpha: 1.0);
+  background-color: rgba($color: $black, $alpha: .5);
 }
 
 .bg-red {
   background-color: rgba($color: $red, $alpha: 1.0);
+}
+
+.bg-purple {
+  background-color: rgba($color: $purple, $alpha: 0.7);
 }
 
 .bg-green {
@@ -96,6 +100,7 @@ $surface-red: #f87070;
 .bg-yellow {
   background-color: rgba($color: #ffcd05, $alpha: 1.0);
 }
+
 
 .workspace-indicator {
   background-color: rgba($color: $darkgrey, $alpha: 1.0);
@@ -115,6 +120,10 @@ $surface-red: #f87070;
   padding: 0px 10px;
   // background-color: rgba($color: $surface-grey, $alpha: 0.9);
   border-radius: 10px;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-2 {
