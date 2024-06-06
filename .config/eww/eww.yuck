@@ -191,7 +191,7 @@
     :class "bg-black rounded-lg"
     (label
       :class "clock_time"
-      :text {formattime(EWW_TIME, "%H:%M")}
+      :text {formattime(EWW_TIME, "%d/%m - %A - %H:%M")}
     )
   )
 )
