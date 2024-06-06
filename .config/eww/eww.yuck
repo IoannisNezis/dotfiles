@@ -18,13 +18,13 @@
       :spacing 10
       (workspaces)
       (wifi)
+      (audio)
     )
     (clock)
     (box
       :space-evenly false
       :spacing 7
       :halign "end"
-      (audio)
       (temperature)
       (mem)
       (cpu)
@@ -57,36 +57,24 @@
         :space-evenly false
         :class "bg-black rounded-lg px-2"
         (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/wifi.svg")
-        (label :class "mx-1" :text network)
-      )
-    )
-    (box
-      :space-evenly false
-      :class "mx-1 px-2 bg-black rounded-lg"
-      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/down.svg")
-      (label 
-        :class "ms-1"
-        :text "${round(EWW_NET["wlan0"]["NET_DOWN"]/1024, 1)} KiB"
-      )
-    )
-    (box
-      :space-evenly false
-      :class "mx-1 px-2 bg-black rounded-lg"
-      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/up.svg")
-      (label 
-        :class "ms-1"
-        :text "${round(EWW_NET["wlan0"]["NET_UP"]/1024, 1)} KiB"
+        (label :class "mx-2" :text network)
       )
     )
   )
 )
 
 (defpoll muted :interval "1s" "pamixer --get-mute")
+(defpoll volume :interval "1s" "pamixer --get-volume")
 (defwidget audio []
   (eventbox
       :onclick "pamixer --toggle-mute"
       :cursor "pointer"
-      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${muted == "true" ? "sound-off.svg" : "sound-on.svg"}")
+      (box
+        :class "bg-black rounded-lg p-2"
+        :space-evenly false
+        (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${muted == "true" ? "sound-off.svg" : "sound-on.svg"}")
+        (label :text "${volume}%" :class "ms-2")
+      )
   )
 )
 
@@ -165,7 +153,7 @@
   )
 )
 
-(defvar workspaces "[{\"id\": 1,\"icon\": \"mail.svg\"},{\"id\": 2,\"icon\": \"code.svg\"},{\"id\": 3,\"icon\": \"web.svg\"},{\"id\": 4,\"icon\": \"terminal.svg\"},{\"id\": 5,\"icon\": \"beaker.svg\"},{\"id\": 6,\"icon\": \"book.svg\"},{\"id\": 7,\"icon\": \"settings.svg\"},{\"id\": 8,\"icon\": \"rocket.svg\"},{\"id\": 9,\"icon\": \"music.svg\"},{\"id\": 10,\"icon\": \"chat.svg\"}]")
+(defvar workspaces "[{\"id\": 1,\"icon\": \"terminal.svg\"},{\"id\": 2,\"icon\": \"code.svg\"},{\"id\": 3,\"icon\": \"web.svg\"},{\"id\": 4,\"icon\": \"mail.svg\"},{\"id\": 5,\"icon\": \"book.svg\"},{\"id\": 6,\"icon\": \"beaker.svg\"},{\"id\": 7,\"icon\": \"settings.svg\"},{\"id\": 8,\"icon\": \"rocket.svg\"},{\"id\": 9,\"icon\": \"music.svg\"},{\"id\": 10,\"icon\": \"chat.svg\"}]")
 (deflisten activeworkspace
            :initial 1
            `./utils/bin/hyprland_socket_listener workspace`
@@ -179,7 +167,7 @@
     (image :image-height 20 
            :halign "end" 
            :valign "center" 
-           :class "bg-black rounded-lg p-2 bg-purple mx-2 "
+           :class "rounded-lg p-2 bg-purple mx-2 "
            :path "${EWW_CONFIG_DIR}/assets/${workspaces[activeworkspace - 1].icon}"
     )
     (box
@@ -200,7 +188,7 @@
   (box 
     :orientation "horizontal"
     :halign "center"
-    :class "foo"
+    :class "bg-black rounded-lg"
     (label
       :class "clock_time"
       :text {formattime(EWW_TIME, "%H:%M")}

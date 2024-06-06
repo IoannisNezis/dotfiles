@@ -1,10 +1,9 @@
 #!/bin/nu
 let workspace = (hyprctl activeworkspace -j | from json | get id)
-print $"detected workspace: ($workspace)"
 
 match $workspace {
   1 => {
-    thunderbird
+    pueue add --immediate alacritty
   },
   2 => {
     pueue add --immediate alacritty
@@ -13,13 +12,13 @@ match $workspace {
     pueue add --immediate firefox
   }
   4 => {
-    pueue add --immediate alacritty
+    pueue add --immediate thunderbird
   }
   5 => {
-    pueue add --immediate alacritty
+    pueue add --immediate obsidian
   }
   6 => {
-    pueue add --immediate okular
+    pueue add --immediate alacritty
   }
   7 => {
     pueue add --immediate alacritty

@@ -39,11 +39,6 @@ $surface-red: #f87070;
   background-color: rgba($color: $darkgrey, $alpha: 0.9);
 }
 
-.foo {
-  padding: 7px;
-  background-color: rgba($color: $black, $alpha: 0.4);
-}
-
 .button {
   color: rgba($color: $red, $alpha: 0.8);
   background-color: rgba($color: $black, $alpha: 0.4);
@@ -138,6 +133,10 @@ $surface-red: #f87070;
 
 .ms-1 {
   margin-left: 0.25rem;
+}
+
+.ms-2 {
+  margin-left: 0.5rem;
 }
 
 .mx-2 {
