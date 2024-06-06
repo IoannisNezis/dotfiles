@@ -20,7 +20,7 @@
       (wifi)
       (audio)
     )
-    (clock)
+    (time)
     (box
       :space-evenly false
       :spacing 7
@@ -184,7 +184,7 @@
   )
 )
 
-(defwidget clock []
+(defwidget time []
   (box 
     :orientation "horizontal"
     :halign "center"
