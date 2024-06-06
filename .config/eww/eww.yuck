@@ -35,18 +35,6 @@
 
 (defvar wifi-interface "wlan0")
 (defpoll network :interval "1s" "iwgetid -r")
-
-(defwidget temperature [] 
-  (box 
-    :space-evenly false
-    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/temperature.svg")
-    (bar 
-      :value "${EWW_TEMPS["THINKPAD_CPU"]}"
-      :c1 "${EWW_TEMPS["THINKPAD_CPU"] < 60 ? "bg-green" : "bg-red"}"
-    )
-  )
-)
-
 (defwidget wifi []
   (box
     :space-evenly false
@@ -78,13 +66,24 @@
   )
 )
 
+(defwidget temperature []
+  (box
+    :space-evenly false
+    (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/temperature.svg")
+    (bar
+      :value "${EWW_TEMPS["THINKPAD_CPU"]}"
+      :c1 "${EWW_TEMPS["THINKPAD_CPU"] < 85 ? "bg-green" : "bg-red"}"
+    )
+  )
+)
+
 (defwidget mem []
   (box
     :space-evenly false
     (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/mem.svg")
     (bar 
       :value "${EWW_RAM.used_mem / EWW_RAM.total_mem * 100}"
-      :c1 "bg-red"
+      :c1 "${(EWW_RAM.used_mem / EWW_RAM.total_mem) < 0.6 ? "bg-purple": "bg-red"}"
     )
   )
 )
