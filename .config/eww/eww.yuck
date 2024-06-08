@@ -19,6 +19,7 @@
       (workspaces)
       (wifi)
       (audio)
+      (notifications)
     )
     (time)
     (box
@@ -29,6 +30,23 @@
       (mem)
       (cpu)
       (battery)
+    )
+  )
+)
+
+(defpoll notifications-waiting :interval "10s" "dunstctl count waiting")
+(defpoll notifications-muted :interval "1s" "dunstctl is-paused")
+(defwidget notifications []
+  (eventbox
+    :onclick "dunstctl set-paused toggle"
+    :cursor "pointer"
+    (box
+      :class "bg-black p-2 rounded-lg"
+      :space-evenly false
+      (image :image-height 20 :halign "end" :valign "center" :path "${EWW_CONFIG_DIR}/assets/${ notifications-muted ? "bell-off.svg" : "bell-on.svg"}")
+      (label
+        :class "${ notifications-muted ? "ms-2" : ""}"
+        :text "${ notifications-muted ? notifications-waiting : ""}")
     )
   )
 )
